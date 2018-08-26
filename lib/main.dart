@@ -36,21 +36,48 @@ class _FirstScreenState extends State<FirstScreen> {
       appBar: AppBar(
         title: Text('Reconfigurar SIM card'),
       ),
-      body: Center(
-        child: TextField(
-          controller: passController,
-          textAlign: TextAlign.start,
-          onChanged: (String txt) {
-            if (txt == 'add-your-passoword-here ') {
-              passController.text = '';
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => TextEditorPage()),
-              );
-            }
-          },
+      body: Container(
+        padding: EdgeInsets.all(32.0),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text("Informe o PUK do seu SIM Card:"),
+              TextField(
+                controller: passController,
+                textAlign: TextAlign.start,
+                onChanged: (String txt) {
+                  if (txt == 'add-your-passoword-here') {
+                    passController.text = '';
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TextEditorPage()),
+                    );
+                  }else{
+                    print(context);
+//                    Scaffold.of(context).showSnackBar(
+//                      new SnackBar(
+//                        content: new Text("Added to favorite"),
+//                        action: new SnackBarAction(
+//                          label: "UNDO",
+//                          onPressed: () => Scaffold.of(context).hideCurrentSnackBar(),
+//                        ),
+//                      ),
+//                    );
+                  }
+                },
+              )
+
+            ],
+          )
+
+
         ),
-      ),
+      )
+
+
+
+
+
     );
   }
 
